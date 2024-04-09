@@ -1,27 +1,28 @@
 import { useState, useEffect } from "react";
-import { products } from '../api.js'
+import { Link } from "react-router-dom";
+import { getBooks } from '../api.js'
 import styles from './style.module.css';
 
-export default function Products() {
+export default function Books() {
 
-    const [products, setProducts ] = useState([]);
+    const [books, setBooks ] = useState([]);
 
     useEffect(() => {
-        const getAllProducts = async () => {
-            const productResponse = await products()
-            console.log({ productResponse }, 'FROM WITHIN USEEFFECT')
-            setProducts(productResponse);
+        const getAllBooks = async () => {
+            const bookResponse = await getBooks()
+            console.log({ bookResponse }, 'FROM WITHIN USEEFFECT')
+            setBooks(bookResponse);
         }
-        getAllProducts();
+        getAllBooks();
     }, [])
 
 
     return (
-        <div className="products">
+        <div className="books">
             <h2 className={styles.h2style}>Browse Library:</h2>
-            {products.map((product) =>
-                (<h3 key={product.title} author={product.author}> {product.title} by {product.author}
-                <Link to={`${product.id}`} className={styles.linkstyle}>details</Link>
+            {books.map((book) =>
+                (<h3 key={book.title} author={book.author}> {book.title} by {book.author}
+                <Link to={`${book.id}`} className={styles.linkstyle}>details</Link>
                 </h3>)
             )}
 
