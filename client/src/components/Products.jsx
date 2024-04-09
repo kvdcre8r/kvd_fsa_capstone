@@ -19,9 +19,9 @@ export default function Products() {
 
     return (
         <div className="products">
-            <h2 className={styles.h2style}>Browse Library:</h2>
+            <h2 className={styles.h2style}>Browse Products:</h2>
             {products.map((product) =>
-                (<h3 key={product.id} author={product.author}> {product.title} by {product.author}
+                (<h3 key={product.id}> {product.name}{product.is_available}
                 <Link to={`${product.id}`} className={styles.linkstyle}>details</Link>
                 </h3>)
             )}
