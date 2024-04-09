@@ -19,7 +19,7 @@ export const postToEndPoint = async (API_URL, endpoint, bodyObj) => {
   }
 };
 
-export async function products() {
+export async function getProducts() {
   try {
     const response = await fetch(`${API_URL}/products`, {
       method: "GET",
@@ -27,7 +27,7 @@ export async function products() {
     const result = await response.json();
 
     console.log(result);
-    return result.books;
+    return result
   } catch (error) {
     console.error(error);
   }
