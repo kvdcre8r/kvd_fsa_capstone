@@ -1,0 +1,30 @@
+body {
+  max-width: 1040px;
+  font-family: caudexR;
+  color: ivory;
+  background-color:rgb(0, 74, 97);
+  margin: 0 10px 10px 10px;
+  padding: 0;
+}
+
+@font-face {
+  font-family: caudexR;
+  src: url(./components/assets/Caudex-Regular.ttf);
+}
+
+@font-face {
+  font-family: caudexI;
+  src: url(./components/assets/Caudex-Italic.ttf);
+}
+
+@font-face {
+  font-family: caudexB;
+  src: url(./components/assets/Caudex-Bold.ttf);
+}
+
+@font-face {
+  font-family: caudexBI;
+  src: url(./components/assets/Caudex-BoldItalic.ttf);
+}
+
+
