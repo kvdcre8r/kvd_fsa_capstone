@@ -77,6 +77,87 @@ const seedDb = async () => {
       price: 39.99,
       is_featured: false
     }),
+    createProductService({
+      name: "BEST_DAD_EVER_HAT",
+      is_available: true,
+      qty: 10,
+      type: "apparel",
+      description: "gray relaxed fit adjustable dad hat",
+      image:
+        "https://m.media-amazon.com/images/I/819yn9bXonL._AC_SX679_.jpg",
+      price: 19.99,
+      is_featured: true
+    }),
+    createProductService({
+      name: "STAR_WARS_SURVIVAL_GUIDE",
+      is_available: true,
+      qty: 10,
+      type: "books",
+      description: "How Not to Get Eaten by Ewoks, hardcover",
+      image: "https://m.media-amazon.com/images/I/81d0o1b3iGL._AC_UY327_FMwebp_QL65_.jpg",
+      price: 8.99,
+      is_featured: false
+    }),
+    createProductService({
+      name: "LEGO_INFINITY_GAUNTLET",
+      is_available: true,
+      qty: 3,
+      type: "legos",
+      description: "Marvel Avengers Infinity Gauntlet replica, 590 pieces, building set",
+      image: "https://m.media-amazon.com/images/I/61iPG6i1miL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+      price: 69.99,
+      is_featured: false
+    }),
+    createProductService({
+      name: "DAD_JOKES_BOOK",
+      is_available: true,
+      qty: 6,
+      type: "books",
+      description: "over 350 cringe-worthy dad jokes, hardcover",
+      image: "https://m.media-amazon.com/images/I/81tDUnAboDL._SY522_.jpg",
+      price: 12.99,
+      is_featured: false
+    }),
+    createProductService({
+      name: "DAD_FACTS_TUMBLER",
+      is_available: true,
+      qty: 10,
+      type: "kitchen/grilling",
+      description: "20 oz tumbler, dark gray, humor, dad nutrition facts, best dad ever",
+      image: "https://m.media-amazon.com/images/I/811jScaN0+L._AC_SX679_.jpg",
+      price: 19.99,
+      is_featured: false
+    }),
+    createProductService({
+      name: "P10",
+      is_available: true,
+      qty: 10,
+      type: "",
+      description: "",
+      image: "",
+      price: 0.00,
+      is_featured: false
+    }),
+    createProductService({
+      name: "P11",
+      is_available: true,
+      qty: 3,
+      type: "",
+      description: "",
+      image: "",
+      price: 0.00,
+      is_featured: false
+    }),
+    createProductService({
+      name: "P12",
+      is_available: true,
+      qty: 6,
+      type: "",
+      description: "",
+      image: "",
+      price: 0.00,
+      is_featured: false
+    }),
   ]);
 
   //SEED CARTS

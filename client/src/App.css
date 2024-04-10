@@ -59,7 +59,8 @@
   }
 
   .product_map {
-    display: flex;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     text-align: center;
 
     #product_info {
@@ -68,7 +69,6 @@
       border-radius: 5px;
       margin: 10px;
       padding: 10px;
-      width: 25%;
 
       img {
         border-radius: 5px;
