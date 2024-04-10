@@ -10,7 +10,9 @@ CREATE TABLE products(
   qty INTEGER DEFAULT 0,
   type VARCHAR(50),
   description VARCHAR(255),
-  image TEXT
+  image TEXT,
+  price FLOAT DEFAULT 0,
+  is_featured BOOLEAN DEFAULT FALSE
 );
 CREATE TABLE users(
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

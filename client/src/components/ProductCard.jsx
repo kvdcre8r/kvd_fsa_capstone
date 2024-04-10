@@ -8,14 +8,15 @@ export default function ProductCard({ product, setProduct }) {
 
   return (
     <div>
-      <figure>
+      <figure className="card_content">
         <img
           src={product.image}
-          alt="An image of the product"
+          alt="product image"
           height={300}
         />
         <figcaption>
           <p id="product_name">{product.name}</p>
+          <p id="price">${product.price}</p>
           <p>- {product.type}</p>
           <p>Description: {product.description}</p>
           <p>* Only {product.qty} left in stock! *</p>

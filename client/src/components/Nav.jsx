@@ -8,6 +8,8 @@ export default function Nav() {
     return (
         <div className="nav">
             <Link to="/" className={styles.homestyle}>Home</Link>
+            <Link to="/Login" className={styles.linkstyle}>Categories</Link>
+            <Link to="/register" className={styles.linkstyle}>All Products</Link>
             <Link to="/Login" className={styles.linkstyle}>Login</Link>
             <Link to="/register" className={styles.linkstyle}>Register</Link>
             <Link to="/account" className={styles.linkstyle}>Account</Link>

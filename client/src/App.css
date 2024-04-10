@@ -16,7 +16,7 @@
     }
   }
 
-  .exp_button {
+  /* .exp_button {
     p {
       font-family: caudexBI;
       color: white;
@@ -29,7 +29,7 @@
       margin-right: 10px;
       border-radius: 5px;
     }
-  }
+  } */
 }
 
 .nav {
@@ -47,6 +47,7 @@
 }
 
 .products {
+  font-family: cambria;
   align-content: center;
   border: 3px solid ivory;
   background-color: black;
@@ -79,7 +80,7 @@
   }
 }
 
-figure {
+.card_content {
   display: flex;
   text-align: left;
   background-color: rgb(46, 46, 46);
@@ -95,10 +96,11 @@ figure {
     padding: 3px;
   }
   figcaption {
-    padding-left: 10px;
+    padding: 10px;
 
     #product_name {
-      padding-bottom: 20px;
+      font-size: 130%;
+      color: greenyellow;
     }
   }
 }

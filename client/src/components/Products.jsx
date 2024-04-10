@@ -17,24 +17,24 @@ export default function Products() {
 
   return (
     <div className="products">
-      <h2 className={styles.h2style}>Browse Products:</h2>
+      <h2>Featured Products:</h2>
       <div className="product_map">
         {products.map((product) => (
           <div key={product.id} id="product_info">
             <p>{product.name}</p>
             <img
               src={product.image}
-              alt="An image of the product"
+              alt="product image"
               height={200}
             />
             <p>{product.is_available}</p>
-            <p>{product.type}</p>
             <Link to={`${product.id}`} className={styles.linkstyle}>
-              details
+              see details
             </Link>
           </div>
         ))}
       </div>
+      <h2>But wait!... there's more!:</h2>
     </div>
   );
 }
