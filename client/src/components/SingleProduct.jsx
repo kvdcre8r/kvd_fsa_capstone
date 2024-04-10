@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleBook } from "../api";
-import BookPage from "./ProductCard";
+import { fetchSingleProduct } from "../api";
+import ProductCard from "./ProductCard";
 
-export default function SingleBook() {
+export default function SingleProduct() {
   const { id } = useParams();
 
-  const [book, setBook] = useState({});
+  const [product, setProduct] = useState(undefined);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function getSingleBook() {
-      const APIResponse = await fetchSingleBook(id);
+    async function getSingleProduct() {
+      const APIResponse = await fetchSingleProduct(id);
       if (APIResponse.error) {
         setError(error.message);
       } else {
-        setBook(APIResponse.book);
+        setProduct(APIResponse);
       }
     }
-    getSingleBook()
+    getSingleProduct()
   }, []);
 
   return (
@@ -26,7 +26,7 @@ export default function SingleBook() {
       {error && <p>{error}</p>}
       <p>{}</p> 
       
-      {book && <BookPage book={book} setBook={setBook} />}
+      {(product) && <ProductCard product={product} setProduct={setProduct} />}
 
     </div>
   );

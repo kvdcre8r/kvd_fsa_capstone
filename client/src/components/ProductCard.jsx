@@ -1,27 +1,28 @@
 import { useEffect } from "react";
-import { checkoutBook } from "../api";
+import { checkoutProduct } from "../api";
 import useToken from "../useToken";
 
 
-export default function ProductCard({ book, setProduct }) {
+export default function ProductCard({ product, setProduct }) {
   const [token] = useToken();
 
   return (
     <div>
       <figure>
         <img
-          src={book.coverimage}
-          alt="A pic of a book's cover photo"
+          src={product.image}
+          alt="An image of the product"
           height={300}
         />
         <figcaption>
-          <p>Title: {book.title}</p>
-          <p>Author: {book.author}</p>
-          <p>Description: {book.description}</p>
+          <p id="product_name">{product.name}</p>
+          <p>- {product.type}</p>
+          <p>Description: {product.description}</p>
+          <p>* Only {product.qty} left in stock! *</p>
         </figcaption>
       </figure>
-      {book.available && (
-        <button onClick={() => checkoutBook(book.id, token).then(setProduct)}>
+      {product.available && (
+        <button onClick={() => checkoutProduct(product.id, token).then(setProduct)}>
           CHECKOUT
         </button>
       )}

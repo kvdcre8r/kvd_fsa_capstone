@@ -7,7 +7,10 @@ CREATE TABLE products(
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name VARCHAR(50),
   is_available BOOLEAN DEFAULT FALSE,
-  qty INTEGER DEFAULT 0
+  qty INTEGER DEFAULT 0,
+  type VARCHAR(50),
+  description VARCHAR(255),
+  image TEXT
 );
 CREATE TABLE users(
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

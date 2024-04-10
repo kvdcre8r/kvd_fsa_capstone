@@ -26,16 +26,19 @@ const fetchProductById = async (id) => {
   }
 };
 
-const createProductService = async ({ name, is_available, qty }) => {
+const createProductService = async ({name, is_available, qty, type, description, image}) => {
   try {
     const CREATE_PRODUCT_SQL_STR = `
-        INSERT INTO products(id,name,is_available,qty) VALUES($1,$2,$3,$4) RETURNING *;
+        INSERT INTO products(id,name,is_available,qty,type,description,image) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *;
         `;
     const createProductResponse = await client.query(CREATE_PRODUCT_SQL_STR, [
       uuid.v4(),
       name,
       is_available,
       qty,
+      type,
+      description,
+      image
     ]);
     return createProductResponse.rows[0];
   } catch (e) {

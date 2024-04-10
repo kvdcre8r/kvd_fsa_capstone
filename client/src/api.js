@@ -35,7 +35,7 @@ export async function getProducts() {
 
 const updateProduct = async (id, token, available) => {
   try {
-    const response = await fetch(`${API_URL}/books/${id}`, {
+    const response = await fetch(`${API_URL}/products/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -46,29 +46,29 @@ const updateProduct = async (id, token, available) => {
       }),
     });
     const result = await response.json();
-    return result.book;
+    return result.product;
   } catch (error) {}
 };
 
-export const returnBook = async (id, token) => {
+export const returnProduct = async (id, token) => {
     return await updateProduct(id, token, true)
 }
 
-export const checkoutBook = async (id, token) => {
+export const checkoutProduct = async (id, token) => {
     return await updateProduct(id, token, false)
 }
 
 
-export const fetchSingleBook = async (id) => {
+export const fetchSingleProduct = async (id) => {
   try {
-    const singleBookResponse = await fetch(`${API_URL}/books/${id}`, {
+    const singleProductResponse = await fetch(`${API_URL}/products/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    const singleBookResult = await singleBookResponse.json();
-    return singleBookResult;
+    const singleProductResult = await singleProductResponse.json();
+    return singleProductResult;
   } catch (e) {
     console.error(e);
   }
@@ -89,7 +89,7 @@ export const getAccount = async (token) => {
         const result = await response.json();
     
         console.log(result);
-        return result.books;
+        return result.products;
       } catch (error) {
         console.error(error);
       }
@@ -97,14 +97,14 @@ export const getAccount = async (token) => {
 
 export const deleteReservation = async (id, token) => {
     try {
-      const singleBookResponse = await fetch(`${API_URL}/reservations/${id}`, {
+      const singleProductResponse = await fetch(`${API_URL}/reservations/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
       });
-      await singleBookResponse.json();
+      await singleProductResponse.json();
     } catch (e) {
       console.error(e);
     }

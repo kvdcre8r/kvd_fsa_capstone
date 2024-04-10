@@ -5,7 +5,7 @@ export default function Heading() {
     return (
         <div className="heading">
             <BrandLogo />
-            <ExpButton />
+            {/* <ExpButton /> */}
         </div>
     )
 }
