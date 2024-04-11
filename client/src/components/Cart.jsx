@@ -17,8 +17,8 @@ export default function Cart() {
   }, []);
 
   return (
-    <div className="account">
-      <h2>cart details</h2>
+    <div className="cart">
+      <h2>Cart details:</h2>
       <ul>
         {reservedBooks.map((book) => (
           <li key={book.id}>

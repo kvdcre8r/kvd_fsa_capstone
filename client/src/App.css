@@ -115,7 +115,8 @@
 }
 
 .all_products,
-.categories {
+.categories,
+.cart {
   background-color: black;
   border: 3px solid ivory;
   border-top-left-radius: 5px;

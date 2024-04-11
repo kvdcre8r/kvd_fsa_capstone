@@ -50,17 +50,39 @@ const seedDb = async () => {
       image:
         "https://m.media-amazon.com/images/I/71t11VduLmL._AC_UL480_FMwebp_QL65_.jpg",
       price: 16.99,
-      is_featured: true
+      is_featured: true,
     }),
     createProductService({
       name: "LEGO_MILLENNIUM_FALCON",
       is_available: true,
       qty: 10,
       category: "entertainment",
-      description: "7,541 piece expert starship model building set. Star Wars Millenium Falcon replica. Includes seven minifigs and multiple interactive features",
+      description:
+        "7,541 piece expert starship model building set. Star Wars Millenium Falcon replica. Includes seven minifigs and multiple interactive features",
       image: "https://m.media-amazon.com/images/I/81kmuPJ9IOL._AC_SX679_.jpg",
       price: 849.99,
-      is_featured: true
+      is_featured: true,
+    }),
+    createProductService({
+      name: "BEST_DAD_EVER_HAT",
+      is_available: true,
+      qty: 10,
+      category: "accessories",
+      description: "gray relaxed fit adjustable dad hat",
+      image: "https://m.media-amazon.com/images/I/819yn9bXonL._AC_SX679_.jpg",
+      price: 19.99,
+      is_featured: true,
+    }),
+    createProductService({
+      name: "GEEK_DAD_BOOK",
+      is_available: true,
+      qty: 10,
+      category: "resources",
+      description: "DIY project guide for geek dads to do with their kids",
+      image:
+        "https://m.media-amazon.com/images/I/41yK8hvjvBL._SX342_SY445_.jpg",
+      price: 10.99,
+      is_featured: true,
     }),
     createProductService({
       name: "SUPER_MARIO_BROS",
@@ -71,7 +93,7 @@ const seedDb = async () => {
       image:
         "https://m.media-amazon.com/images/I/81AFwmGOQLL._AC_UY327_FMwebp_QL65_.jpg",
       price: 19.99,
-      is_featured: false
+      is_featured: false,
     }),
     createProductService({
       name: "MARIO_KART_8",
@@ -82,18 +104,7 @@ const seedDb = async () => {
       image:
         "https://m.media-amazon.com/images/I/81iJG2js5-S._AC_UY327_FMwebp_QL65_.jpg",
       price: 39.99,
-      is_featured: false
-    }),
-    createProductService({
-      name: "BEST_DAD_EVER_HAT",
-      is_available: true,
-      qty: 10,
-      category: "accessories",
-      description: "gray relaxed fit adjustable dad hat",
-      image:
-        "https://m.media-amazon.com/images/I/819yn9bXonL._AC_SX679_.jpg",
-      price: 19.99,
-      is_featured: true
+      is_featured: false,
     }),
     createProductService({
       name: "STAR_WARS_SURVIVAL_GUIDE",
@@ -101,19 +112,22 @@ const seedDb = async () => {
       qty: 10,
       category: "resources",
       description: "How Not to Get Eaten by Ewoks, hardcover",
-      image: "https://m.media-amazon.com/images/I/81d0o1b3iGL._AC_UY327_FMwebp_QL65_.jpg",
+      image:
+        "https://m.media-amazon.com/images/I/81d0o1b3iGL._AC_UY327_FMwebp_QL65_.jpg",
       price: 8.99,
-      is_featured: false
+      is_featured: false,
     }),
     createProductService({
       name: "LEGO_INFINITY_GAUNTLET",
       is_available: true,
       qty: 3,
       category: "entertainment",
-      description: "Marvel Avengers Infinity Gauntlet replica, 590 pieces, building set",
-      image: "https://m.media-amazon.com/images/I/61iPG6i1miL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+      description:
+        "Marvel Avengers Infinity Gauntlet replica, 590 pieces, building set",
+      image:
+        "https://m.media-amazon.com/images/I/61iPG6i1miL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
       price: 69.99,
-      is_featured: false
+      is_featured: false,
     }),
     createProductService({
       name: "DAD_JOKES_BOOK",
@@ -123,37 +137,29 @@ const seedDb = async () => {
       description: "over 350 cringe-worthy dad jokes, hardcover",
       image: "https://m.media-amazon.com/images/I/81tDUnAboDL._SY522_.jpg",
       price: 12.99,
-      is_featured: false
+      is_featured: false,
     }),
     createProductService({
       name: "DAD_FACTS_TUMBLER",
       is_available: true,
       qty: 10,
       category: "accessories",
-      description: "20 oz tumbler, dark gray, humor, dad nutrition facts, best dad ever",
+      description:
+        "20 oz tumbler, dark gray, humor, dad nutrition facts, best dad ever",
       image: "https://m.media-amazon.com/images/I/811jScaN0+L._AC_SX679_.jpg",
       price: 19.99,
-      is_featured: false
-    }),
-    createProductService({
-      name: "GEEK_DAD_BOOK",
-      is_available: true,
-      qty: 10,
-      category: "resources",
-      description: "DIY project guide for geek dads to do with their kids",
-      image: "https://m.media-amazon.com/images/I/41yK8hvjvBL._SX342_SY445_.jpg",
-      price: 10.99,
-      is_featured: true
+      is_featured: false,
     }),
     createProductService({
       name: "DAD_MULTITOOL",
       is_available: true,
       qty: 3,
       category: "gadgets",
-      description: "6-inch multitool, Best Dad Ever inscription on case, screwdriver, wirecutter/stripper, plier",
+      description:
+        "6-inch multitool, Best Dad Ever inscription on case, screwdriver, wirecutter/stripper, plier",
       image: "https://m.media-amazon.com/images/I/81wNKxIs81L._AC_SX425_.jpg",
       price: 19.99,
-      is_featured: false
+      is_featured: false,
     }),
     createProductService({
       name: "MAGNETIC_WRISTBAND",
@@ -163,7 +169,7 @@ const seedDb = async () => {
       description: "wrist magnet tool belt and screw holder",
       image: "https://m.media-amazon.com/images/I/81yZF2rN4VL._AC_SX679_.jpg",
       price: 16.99,
-      is_featured: false
+      is_featured: false,
     }),
   ]);
 
