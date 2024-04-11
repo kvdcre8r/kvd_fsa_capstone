@@ -26,17 +26,17 @@ const fetchProductById = async (id) => {
   }
 };
 
-const createProductService = async ({name, is_available, qty, type, description, image, price, is_featured}) => {
+const createProductService = async ({name, is_available, qty, category, description, image, price, is_featured}) => {
   try {
     const CREATE_PRODUCT_SQL_STR = `
-        INSERT INTO products(id,name,is_available,qty,type,description,image,price,is_featured) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *;
+        INSERT INTO products(id,name,is_available,qty,category,description,image,price,is_featured) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *;
         `;
     const createProductResponse = await client.query(CREATE_PRODUCT_SQL_STR, [
       uuid.v4(),
       name,
       is_available,
       qty,
-      type,
+      category,
       description,
       image,
       price,

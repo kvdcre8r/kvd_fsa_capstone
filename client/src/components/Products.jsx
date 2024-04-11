@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../api.js";
-import styles from "./style.module.css";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -21,20 +20,20 @@ export default function Products() {
       <div className="product_map">
         {products.map((product) => (
           <div key={product.id} id="product_info">
-            <p>{product.name}</p>
+            <p id="product_name">{product.name}</p>
             <img
               src={product.image}
               alt="product image"
               height={200}
             />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className={styles.linkstyle}>
+            <Link to={`${product.id}`} className="details">
               see details
             </Link>
           </div>
         ))}
       </div>
-      <h2>But wait!... there's more!:</h2>
+      <h2>But wait!... there's more!...</h2>
     </div>
   );
 }

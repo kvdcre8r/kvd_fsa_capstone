@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useToken from "../useToken.js";
 import { getAccount, deleteReservation } from "../api.js";
 
-export default function Account() {
+export default function Cart() {
   const [reservedBooks, setReservedBooks] = useState([]);
   const [token, setToken] = useToken();
 
@@ -18,7 +18,7 @@ export default function Account() {
 
   return (
     <div className="account">
-      <h2>account details</h2>
+      <h2>cart details</h2>
       <ul>
         {reservedBooks.map((book) => (
           <li key={book.id}>

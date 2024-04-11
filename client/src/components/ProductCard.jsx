@@ -17,7 +17,7 @@ export default function ProductCard({ product, setProduct }) {
         <figcaption>
           <p id="product_name">{product.name}</p>
           <p id="price">${product.price}</p>
-          <p>- {product.type}</p>
+          <p>Category: {product.category}</p>
           <p>Description: {product.description}</p>
           <p>* Only {product.qty} left in stock! *</p>
         </figcaption>

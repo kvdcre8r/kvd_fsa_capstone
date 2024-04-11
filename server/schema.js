@@ -8,7 +8,7 @@ CREATE TABLE products(
   name VARCHAR(50),
   is_available BOOLEAN DEFAULT FALSE,
   qty INTEGER DEFAULT 0,
-  type VARCHAR(50),
+  category VARCHAR(50),
   description VARCHAR(255),
   image TEXT,
   price FLOAT DEFAULT 0,
