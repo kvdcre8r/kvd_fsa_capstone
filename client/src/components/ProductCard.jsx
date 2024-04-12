@@ -20,13 +20,13 @@ export default function ProductCard({ product, setProduct }) {
           <p>Category: {product.category}</p>
           <p>Description: {product.description}</p>
           <p>* Only {product.qty} left in stock! *</p>
-        </figcaption>
-      </figure>
-      {product.available && (
+      {product.is_available && (
         <button onClick={() => checkoutProduct(product.id, token).then(setProduct)}>
-          CHECKOUT
+          Add to Cart
         </button>
       )}
+        </figcaption>
+      </figure>
       {/* checkout button here */}
       {/* <button onClick={handleDelete}>Delete Player</button> */}
     </div>

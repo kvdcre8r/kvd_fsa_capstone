@@ -62,19 +62,11 @@ const createUserCart = async ({ user_id }) => {
 };
 
 const fetchCartByUserId = async ({ user_id }) => {
-  try {
     const FETCH_CART_SQL = `
       SELECT cart_id FROM carts WHERE id = $1`
       const cartResponse = await client.query(FETCH_CART_SQL, [ user_id ])
-      if (!cartResponse.length){
-        throw new Error("Cannot find cart associated with the user")
-      }
       return cartResponse.rows[0]
-  } catch (e) {
-    throw new Error(e);
-    
   }
-}
 
 const authenticateUser = async ({ email, password }) => {
   const SQL = `SELECT id, password from users WHERE email = $1`;

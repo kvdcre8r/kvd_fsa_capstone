@@ -34,7 +34,8 @@ const {
   validateProductAmount,
   addProductToCartProducts,
   removeProductFromCartProducts,
-  updateCartProducts
+  updateCartProducts,
+  // createCartProduct
 } = require("./service/productService.js");
 
 /*
@@ -92,7 +93,7 @@ app.get("/api/users", async (req, res, next) => {
   }
 });
 
-app.post("/api/users", async (req, res, next) => {
+app.post("/api/users/register", async (req, res, next) => {
   try {
     const newUser = await createUserService(req.body);
     res.send(newUser);
@@ -101,13 +102,26 @@ app.post("/api/users", async (req, res, next) => {
   }
 });
 
-app.post("/api/login", async (req, res, next) => {
+app.post("/api/users/login", async (req, res, next) => {
   try {
     res.send(await authenticateUser(req.body));
   } catch (ex) {
     next(ex);
   }
 });
+
+app.post("/api/cart", isLoggedIn, async (req, res, next) => {
+  try {
+    const cart = await fetchCartByUserId(req.user)
+    if (!cart) {
+      const createdCart = await createUserCart(req.body)
+      const cartProductRes = await createCartProduct({cartId:createdCart.id, productId:req.body.productId, qty:req.body.qty})
+      res.send(cartProductRes)
+    }
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 app.post("/api/cart/:cartId/product/:productId", isLoggedIn, async (req, res, next) => {
   try {
