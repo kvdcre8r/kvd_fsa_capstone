@@ -63,7 +63,7 @@ const createUserCart = async ({ user_id }) => {
 
 const fetchCartByUserId = async ({ user_id }) => {
     const FETCH_CART_SQL = `
-      SELECT cart_id FROM carts WHERE id = $1`
+      SELECT id FROM carts WHERE user_id = $1`
       const cartResponse = await client.query(FETCH_CART_SQL, [ user_id ])
       return cartResponse.rows[0]
   }
@@ -92,17 +92,32 @@ const authenticateUser = async ({ email, password }) => {
 
 
 //isLoggedIn
-const fetchUserByTokenId = async(tokenId)  => {
+const fetchUserByTokenId = async(token)=> {
   let id;
-  try {
-    const payload = await jwt.verify(tokenId, jwt_secret);
-    id = payload.id
-  } catch (err) {
-    const error = new Error('NOT AUTH');
-    error.status = 401 
+  console.log("insidefinduserwithtoken")
+  console.log("passed token " + token)
+  try{
+    const payload = await jwt.verify(token, jwt_secret);
+    id = payload.id;
+  }catch(ex){
+    console.error(ex)
+    const error = Error('not authorized');
+    error.status = 401;
+    throw error;
+
+  }
+  console.log(id)
+  const SQL = `
+    SELECT id, email FROM users WHERE id=$1;
+  `;
+  const response = await client.query(SQL, [id]);
+  if(!response.rows.length){
+    const error = Error('not authorized');
+    error.status = 401;
     throw error;
   }
-}
+  return response.rows[0];
+};
 
 
 module.exports = {

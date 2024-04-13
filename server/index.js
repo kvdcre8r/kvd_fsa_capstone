@@ -25,7 +25,7 @@ const {
   createUserCart,
   fetchCartByUserId,
   createCart,
-  fetchUserByTokenId
+  fetchUserByTokenId,
 } = require("./service/userService.js");
 const {
   fetchProducts,
@@ -47,14 +47,14 @@ headers: {
 }
 */
 
-const isLoggedIn = async (req,res,next) => {
+const isLoggedIn = async (req, res, next) => {
   try {
     req.user = await fetchUserByTokenId(req.headers.authorization);
-    next()
+    next();
   } catch (ex) {
-    next(ex)
+    next(ex);
   }
-}
+};
 
 app.use(express.json());
 app.use(require("morgan")("dev"));
@@ -112,44 +112,56 @@ app.post("/api/users/login", async (req, res, next) => {
 
 app.post("/api/cart", isLoggedIn, async (req, res, next) => {
   try {
-    const cart = await fetchCartByUserId(req.user)
+    let cart = await fetchCartByUserId({ user_id: req.user.id });
     if (!cart) {
-      const createdCart = await createUserCart(req.body)
-      const cartProductRes = await createCartProduct({cartId:createdCart.id, productId:req.body.productId, qty:req.body.qty})
-      res.send(cartProductRes)
+      cart = await createUserCart({ user_id: req.user.id });
     }
+    const cartProductRes = await createCartProduct({
+      cartId: cart.id,
+      productId: req.body.productId,
+      qty: req.body.qty,
+    });
+    res.send(cartProductRes);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-})
+});
 
-app.post("/api/cart/:cartId/product/:productId", isLoggedIn, async (req, res, next) => {
-  try {
-    const {cartId, productId} = req.params;
-    const {qty} = req.body;
-    if (await validateProductAmount({productId, qty}) === false) {
-      res.send(new Error('NOT ENOUGH QUANTITIES'));
+app.post(
+  "/api/cart/:cartId/product/:productId",
+  isLoggedIn,
+  async (req, res, next) => {
+    try {
+      const { cartId, productId } = req.params;
+      const { qty } = req.body;
+      if ((await validateProductAmount({ productId, qty })) === false) {
+        res.send(new Error("NOT ENOUGH QUANTITIES"));
+      }
+      const updatedProd = await addProductToCartProducts({ productId, qty }); // SHOULD
+      console.log({ updatedProd }, "THIS IS WHAT WE UPDATED");
+      // perform an Update to product based off of the productId
+      res.send(await createCartProduct({ cartId, productId, qty }));
+      // result of calling should return the row we created
+      // const cartId = req.params.cartId
+    } catch (ex) {
+      next(ex);
     }
-    const updatedProd = await addProductToCartProducts({productId, qty}); // SHOULD 
-    console.log({updatedProd}, 'THIS IS WHAT WE UPDATED')
-    // perform an Update to product based off of the productId
-    res.send(await createCartProduct({ cartId, productId, qty }));
-     // result of calling should return the row we created
-    // const cartId = req.params.cartId
-  } catch (ex) {
-    next(ex);
   }
-})
+);
 
-app.put("/api/cart/:cartId/product/:productId", isLoggedIn, async (req,res,next)=> {
-  try {
-    const {cartId,productId} = req.params;
-    const {qty} = req.body;
-    res.send(await updateCartProducts({cartId,productId,qty}));
-  }catch(e){
-    next(e)
+app.put(
+  "/api/cart/:cartId/product/:productId",
+  isLoggedIn,
+  async (req, res, next) => {
+    try {
+      const { cartId, productId } = req.params;
+      const { qty } = req.body;
+      res.send(await updateCartProducts({ cartId, productId, qty }));
+    } catch (e) {
+      next(e);
+    }
   }
-})
+);
 
 // init function
 const init = async () => {

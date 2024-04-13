@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useToken from '../useToken.js'
-import { postToEndPoint, API_URL } from "../api.js";
+import { postToEndPoint} from "../api.js";
 
 export default function Register() {
     const [username, setUsername] = useState("")
@@ -12,7 +12,7 @@ export default function Register() {
 
 
 
-        const userResponse = await postToEndPoint(API_URL,'users/register',{
+        const userResponse = await postToEndPoint('users/register',{
             email: username,
             password
         })

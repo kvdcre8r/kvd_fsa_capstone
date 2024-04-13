@@ -12,7 +12,7 @@ export default function Login () {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const userResponse = await postToEndPoint(API_URL, 'users/login', {
+        const userResponse = await postToEndPoint('users/login', {
             email: username,
             password
         })
