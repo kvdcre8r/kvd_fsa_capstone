@@ -94,10 +94,11 @@ const authenticateUser = async ({ email, password }) => {
 //isLoggedIn
 const fetchUserByTokenId = async(token)=> {
   let id;
-  console.log("insidefinduserwithtoken")
-  console.log("passed token " + token)
   try{
-    const payload = await jwt.verify(token, jwt_secret);
+    console.log({token})
+    token = token.split(" ")[1]
+    const payload = jwt.verify(token, jwt_secret);
+    console.log({payload})
     id = payload.id;
   }catch(ex){
     console.error(ex)
@@ -106,11 +107,12 @@ const fetchUserByTokenId = async(token)=> {
     throw error;
 
   }
-  console.log(id)
+  console.log({id})
   const SQL = `
     SELECT id, email FROM users WHERE id=$1;
   `;
   const response = await client.query(SQL, [id]);
+  //look at what response is after line 114
   if(!response.rows.length){
     const error = Error('not authorized');
     error.status = 401;

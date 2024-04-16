@@ -39,6 +39,34 @@ export async function getProducts() {
   }
 }
 
+// export async function getFeaturedProducts() {
+//   try {
+//     const response = await fetch(`$/products/:featured`, {
+//       method: "GET",
+//     });
+//     const result = await response.json();
+
+//     console.log(result);
+//     return result;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+export const getCartProducts = async (token) => {
+  try {
+    const response = await fetch(`${API_URL}/cart`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return await response.json();
+  } catch (ex) {
+    console.error(ex);
+  }
+};
+
 const updateProduct = async (id, token, available) => {
   try {
     const response = await fetch(`${API_URL}/products/${id}`, {
@@ -77,8 +105,6 @@ export const fetchSingleProduct = async (id) => {
   } catch (e) {
     console.error(e);
   }
-  // write GET books/:bookId
-  // return book from this function
 };
 
 export const getAccount = async (token) => {

@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import useToken from "../useToken.js";
-import { getAccount, deleteReservation } from "../api.js";
+import {getCartProducts} from "../api.js"
+// import { getAccount, deleteReservation } from "../api.js";
 
 export default function Cart() {
-  const [reservedBooks, setReservedBooks] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
   const [token, setToken] = useToken();
 
   useEffect(() => {
     if (token) {
       const fetchReso = async () => {
-        const resoRes = await getAccount(token);
-        setReservedBooks(resoRes);
+        const resoRes = await getCartProducts(token);
+        setCartProducts(resoRes);
       };
       fetchReso();
     }
@@ -20,10 +21,10 @@ export default function Cart() {
     <div className="cart">
       <h2>Cart details:</h2>
       <ul>
-        {reservedBooks.map((book) => (
-          <li key={book.id}>
-            {book.title}{" "}
-            <button onClick={() => deleteReservation(book.id, token).then(() => getAccount(token)).then(setReservedBooks)}>Return</button>
+        {cartProducts.map((product) => (
+          <li key={product.id}>
+            {product.title}{" "}
+            <button onClick={() => deleteReservation(product.id, token).then(() => getAccount(token)).then(setCartProducts)}>Return</button>
           </li>
         ))}
       </ul>

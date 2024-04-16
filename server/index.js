@@ -35,6 +35,8 @@ const {
   addProductToCartProducts,
   removeProductFromCartProducts,
   updateCartProducts,
+  fetchCartProductsByCartId,
+  // fetchFeaturedProducts,
   // createCartProduct
 } = require("./service/productService.js");
 
@@ -47,9 +49,12 @@ headers: {
 }
 */
 
+// look at what req.user is after line 55
 const isLoggedIn = async (req, res, next) => {
   try {
+    console.log(req.headers.authorization)
     req.user = await fetchUserByTokenId(req.headers.authorization);
+    console.log(req.user)
     next();
   } catch (ex) {
     next(ex);
@@ -84,6 +89,16 @@ app.get("/api/products/:id", async (req, res, next) => {
   }
 });
 
+// app.get("/api/products/:featured", async (req, res, next) => {
+//   try {
+//     const { isFeatured } = req.params;
+//     const featured = await fetchFeaturedProducts(isFeatured);
+//     res.send(featured);
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
+
 app.get("/api/users", async (req, res, next) => {
   try {
     const userReponse = await fetchUsers();
@@ -105,6 +120,17 @@ app.post("/api/users/register", async (req, res, next) => {
 app.post("/api/users/login", async (req, res, next) => {
   try {
     res.send(await authenticateUser(req.body));
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+app.get("/api/cart", isLoggedIn, async (req, res, next) => {
+  try {
+    console.log(req.user_id, req.id, "this is coming from /api/cart")
+    let cart = await fetchCartByUserId({ user_id: req.user.id });
+    console.log(cart)
+    res.send(await fetchCartProductsByCartId(cart.id));
   } catch (ex) {
     next(ex);
   }

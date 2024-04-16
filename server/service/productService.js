@@ -48,6 +48,31 @@ const createProductService = async ({name, is_available, qty, category, descript
   }
 };
 
+// const fetchFeaturedProducts = async (is_featured) => {
+//   try {
+//     const FETCH_PRODUCT_BY_IS_FEATURED_QUERY = `
+//     SELECT * FROM products
+//     WHERE is_featured = true;
+//     `;
+//     const { rows } = await client.query(FETCH_PRODUCT_BY_IS_FEATURED_QUERY, [is_featured]);
+//     return rows[0];
+//   } catch (e) {
+//     throw new Error(e);
+//   }
+// };
+
+const fetchCartProductsByCartId = async (cartId) => {
+  const SQL = `
+  SELECT *
+  FROM cart_products
+  WHERE cart_id = $1;`
+  const query = await client.query(
+    SQL,
+    [cartId]
+  )
+  return query.rows
+}
+
 const createCartProduct = async ({ cartId, productId, qty }) => {
   try {
     const CREATE_CARTPRODUCT_SQL_STR = `
@@ -120,4 +145,6 @@ module.exports = {
   validateProductAmount,
   addProductToCartProducts,
   updateCartProducts,
+  fetchCartProductsByCartId,
+  // fetchFeaturedProducts,
 };

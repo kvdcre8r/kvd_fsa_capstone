@@ -27,8 +27,6 @@ export default function ProductCard({ product, setProduct }) {
       )}
         </figcaption>
       </figure>
-      {/* checkout button here */}
-      {/* <button onClick={handleDelete}>Delete Player</button> */}
     </div>
   );
 }
