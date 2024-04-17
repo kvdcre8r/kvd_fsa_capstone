@@ -53,7 +53,7 @@ const seedDb = async () => {
       is_featured: true,
     }),
     createProductService({
-      name: "LEGO_MILLENNIUM_FALCON",
+      name: "LEGO MILLENNIUM FALCON",
       is_available: true,
       qty: 10,
       category: "entertainment",
@@ -64,7 +64,7 @@ const seedDb = async () => {
       is_featured: true,
     }),
     createProductService({
-      name: "BEST_DAD_EVER_HAT",
+      name: "BEST DAD EVER HAT",
       is_available: true,
       qty: 10,
       category: "accessories",
@@ -74,7 +74,7 @@ const seedDb = async () => {
       is_featured: true,
     }),
     createProductService({
-      name: "GEEK_DAD_BOOK",
+      name: "GEEK DAD BOOK",
       is_available: true,
       qty: 10,
       category: "resources",
@@ -85,7 +85,7 @@ const seedDb = async () => {
       is_featured: true,
     }),
     createProductService({
-      name: "SUPER_MARIO_BROS",
+      name: "SUPER MARIO BROS",
       is_available: true,
       qty: 3,
       category: "entertainment",
@@ -96,7 +96,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "MARIO_KART_8",
+      name: "MARIO KART 8",
       is_available: true,
       qty: 6,
       category: "entertainment",
@@ -107,7 +107,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "STAR_WARS_SURVIVAL_GUIDE",
+      name: "STAR WARS SURVIVAL GUIDE",
       is_available: true,
       qty: 10,
       category: "resources",
@@ -118,7 +118,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "LEGO_INFINITY_GAUNTLET",
+      name: "LEGO INFINITY GAUNTLET",
       is_available: true,
       qty: 3,
       category: "entertainment",
@@ -130,7 +130,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "DAD_JOKES_BOOK",
+      name: "DAD JOKES BOOK",
       is_available: true,
       qty: 6,
       category: "resources",
@@ -140,7 +140,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "DAD_FACTS_TUMBLER",
+      name: "DAD FACTS TUMBLER",
       is_available: true,
       qty: 10,
       category: "accessories",
@@ -151,7 +151,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "DAD_MULTITOOL",
+      name: "DAD MULTITOOL",
       is_available: true,
       qty: 3,
       category: "gadgets",
@@ -162,7 +162,7 @@ const seedDb = async () => {
       is_featured: false,
     }),
     createProductService({
-      name: "MAGNETIC_WRISTBAND",
+      name: "MAGNETIC WRISTBAND",
       is_available: true,
       qty: 6,
       category: "gadgets",

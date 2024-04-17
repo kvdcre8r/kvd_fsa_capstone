@@ -5,18 +5,28 @@ import { getProducts } from "../api.js";
 export default function Products() {
   const [catAccessories, setCatAccessories] = useState([]);
   const [catEntertainment, setCatEntertainment] = useState([]);
+  const [catResources, setCatResources] = useState([]);
+  const [catGadgets, setCatGadgets] = useState([]);
 
   useEffect(() => {
     const getAllProducts = async () => {
       const productsResponse = await getProducts();
       const accessories = productsResponse.filter(
-        (product) => (product.category == "accessories")
+        (product) => product.category == "accessories"
       );
       const entertainment = productsResponse.filter(
-        (product) => (product.category == "entertainment")
+        (product) => product.category == "entertainment"
+      );
+      const resources = productsResponse.filter(
+        (product) => product.category == "resources"
+      );
+      const gadgets = productsResponse.filter(
+        (product) => product.category == "gadgets"
       );
       setCatAccessories(accessories);
       setCatEntertainment(entertainment);
+      setCatResources(resources);
+      setCatGadgets(gadgets);
     };
     getAllProducts();
   }, []);
@@ -50,9 +60,9 @@ export default function Products() {
           </div>
         ))}
       </div>
-      {/* <h2>Featured Products:</h2>
+      <h2>Resources:</h2>
       <div className="product_map">
-        {featuredProducts.map((product) => (
+        {catResources.map((product) => (
           <div key={product.id} id="product_info">
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
@@ -63,9 +73,9 @@ export default function Products() {
           </div>
         ))}
       </div>
-      <h2>But wait!... there's more!...</h2>
+      <h2>Gadgets:</h2>
       <div className="product_map">
-        {products.map((product) => (
+        {catGadgets.map((product) => (
           <div key={product.id} id="product_info">
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
@@ -75,7 +85,7 @@ export default function Products() {
             </Link>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }
