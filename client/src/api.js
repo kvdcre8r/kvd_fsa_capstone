@@ -7,7 +7,8 @@ export const postToEndPoint = async (endpoint, bodyObj, token) => {
   try {
     const headers = { "Content-Type": "application/json" };
     if (token) {
-      headers["Authorization"] = token;
+      headers["Authorization"] = `Bearer ${token}`;
+      // headers["Authorization"] = `${token}`;
     }
     const response = await fetch(`${API_URL}/${endpoint}`, {
       method: "POST",
@@ -39,25 +40,12 @@ export async function getProducts() {
   }
 }
 
-// export async function getFeaturedProducts() {
-//   try {
-//     const response = await fetch(`$/products/:featured`, {
-//       method: "GET",
-//     });
-//     const result = await response.json();
-
-//     console.log(result);
-//     return result;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
 export const getCartProducts = async (token) => {
   try {
     const response = await fetch(`${API_URL}/cart`, {
       headers: {
         "Content-Type": "application/json",
+        // Authorization: `Bearer ${token}`,
         Authorization: `Bearer ${token}`,
       },
     });

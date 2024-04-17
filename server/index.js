@@ -127,10 +127,24 @@ app.post("/api/users/login", async (req, res, next) => {
 
 app.get("/api/cart", isLoggedIn, async (req, res, next) => {
   try {
-    console.log(req.user_id, req.id, "this is coming from /api/cart")
+    
     let cart = await fetchCartByUserId({ user_id: req.user.id });
-    console.log(cart)
-    res.send(await fetchCartProductsByCartId(cart.id));
+    
+    const productInCart = await fetchCartProductsByCartId(cart.id);
+
+    
+    const productPromises = productInCart.map(async ({product_id}) => await fetchProductById(product_id));
+    const productNames = (await Promise.all(productPromises)).map((product => product.name));
+    console.log(productNames)
+    const products = productInCart.map((product, i) => {
+      return {
+        ...product,
+        name:productNames[i]
+      }
+    })
+    
+    
+    res.send(products);
   } catch (ex) {
     next(ex);
   }

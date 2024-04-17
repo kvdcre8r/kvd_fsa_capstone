@@ -23,8 +23,8 @@ export default function Cart() {
       <ul>
         {cartProducts.map((product) => (
           <li key={product.id}>
-            {product.title}{" "}
-            <button onClick={() => deleteReservation(product.id, token).then(() => getAccount(token)).then(setCartProducts)}>Return</button>
+            {product.name}{" "}
+            {product.qty}
           </li>
         ))}
       </ul>

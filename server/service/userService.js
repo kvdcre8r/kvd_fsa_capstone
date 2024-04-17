@@ -69,7 +69,7 @@ const fetchCartByUserId = async ({ user_id }) => {
   }
 
 const authenticateUser = async ({ email, password }) => {
-  const SQL = `SELECT id, password from users WHERE email = $1`;
+  const SQL = `SELECT id, password, is_admin from users WHERE email = $1`;
   const response = await client.query(SQL, [email]);
   if (
     !response.rows.length ||
@@ -82,6 +82,7 @@ const authenticateUser = async ({ email, password }) => {
   const token = await jwt.sign(
     {
       id: response.rows[0].id,
+      is_admin: response.rows[0].is_admin
     },
     jwt_secret
   );
@@ -93,13 +94,14 @@ const authenticateUser = async ({ email, password }) => {
 
 //isLoggedIn
 const fetchUserByTokenId = async(token)=> {
-  let id;
+  let user;
   try{
-    console.log({token})
+    
     token = token.split(" ")[1]
     const payload = jwt.verify(token, jwt_secret);
-    console.log({payload})
-    id = payload.id;
+    user = payload
+    return user;
+
   }catch(ex){
     console.error(ex)
     const error = Error('not authorized');
@@ -107,18 +109,17 @@ const fetchUserByTokenId = async(token)=> {
     throw error;
 
   }
-  console.log({id})
-  const SQL = `
-    SELECT id, email FROM users WHERE id=$1;
-  `;
-  const response = await client.query(SQL, [id]);
-  //look at what response is after line 114
-  if(!response.rows.length){
-    const error = Error('not authorized');
-    error.status = 401;
-    throw error;
-  }
-  return response.rows[0];
+  // const SQL = `
+  //   SELECT id, email FROM users WHERE id=$1;
+  // `;
+  // const response = await client.query(SQL, [id]);
+  // //look at what response is after line 114
+  // if(!response.rows.length){
+  //   const error = Error('not authorized');
+  //   error.status = 401;
+  //   throw error;
+  // }
+  // return response.rows[0];
 };
 
 

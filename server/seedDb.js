@@ -42,7 +42,7 @@ const seedDb = async () => {
     DAD_MULTITOOL,
   ] = await Promise.all([
     createProductService({
-      name: "GRILLFATHER_APRON",
+      name: "GRILLFATHER APRON",
       is_available: true,
       qty: 10,
       category: "accessories",
