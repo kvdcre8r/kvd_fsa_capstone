@@ -1,20 +1,12 @@
-// import for express
+//IMPORTS
 const express = require("express");
 const cors = require("cors");
-//creating an instance of express && calling it app;
 const app = express();
 app.use(cors());
 
-//import path module, to join directories
 const path = require("path");
-
-//CLIENT
 const client = require("./client.js");
-
-//SCHEMA
 const SCHEMA = require("./schema.js");
-
-//SEED FC
 const seedDb = require("./seedDb.js");
 
 //SERVICES
@@ -36,25 +28,14 @@ const {
   removeProductFromCartProducts,
   updateCartProducts,
   fetchCartProductsByCartId,
-  // fetchFeaturedProducts,
-  // createCartProduct
 } = require("./service/productService.js");
 
-/*
-
-headers: {
-  Content-Type: application/json
-  authorization: sometokenValue
-  x-api-key: someapikey
-}
-*/
-
-// look at what req.user is after line 55
+//MIDDLEWARE
 const isLoggedIn = async (req, res, next) => {
   try {
-    console.log(req.headers.authorization)
+    console.log(req.headers.authorization);
     req.user = await fetchUserByTokenId(req.headers.authorization);
-    console.log(req.user)
+    console.log(req.user);
     next();
   } catch (ex) {
     next(ex);
@@ -63,13 +44,13 @@ const isLoggedIn = async (req, res, next) => {
 
 app.use(express.json());
 app.use(require("morgan")("dev"));
-// static routes
+// STATIC ROUTES
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "../client/dist/index.html"))
 );
 
-// app routes
+// APP ROUTES
 app.get("/api/products", async (req, res, next) => {
   try {
     const productResponse = await fetchProducts();
@@ -88,16 +69,6 @@ app.get("/api/products/:id", async (req, res, next) => {
     next(ex);
   }
 });
-
-// app.get("/api/products/:featured", async (req, res, next) => {
-//   try {
-//     const { isFeatured } = req.params;
-//     const featured = await fetchFeaturedProducts(isFeatured);
-//     res.send(featured);
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
 
 app.get("/api/users", async (req, res, next) => {
   try {
@@ -127,23 +98,24 @@ app.post("/api/users/login", async (req, res, next) => {
 
 app.get("/api/cart", isLoggedIn, async (req, res, next) => {
   try {
-    
     let cart = await fetchCartByUserId({ user_id: req.user.id });
-    
+
     const productInCart = await fetchCartProductsByCartId(cart.id);
 
-    
-    const productPromises = productInCart.map(async ({product_id}) => await fetchProductById(product_id));
-    const productNames = (await Promise.all(productPromises)).map((product => product.name));
-    console.log(productNames)
+    const productPromises = productInCart.map(
+      async ({ product_id }) => await fetchProductById(product_id)
+    );
+    const productNames = (await Promise.all(productPromises)).map(
+      (product) => product.name
+    );
+    console.log(productNames);
     const products = productInCart.map((product, i) => {
       return {
         ...product,
-        name:productNames[i]
-      }
-    })
-    
-    
+        name: productNames[i],
+      };
+    });
+
     res.send(products);
   } catch (ex) {
     next(ex);
@@ -179,10 +151,7 @@ app.post(
       }
       const updatedProd = await addProductToCartProducts({ productId, qty }); // SHOULD
       console.log({ updatedProd }, "THIS IS WHAT WE UPDATED");
-      // perform an Update to product based off of the productId
       res.send(await createCartProduct({ cartId, productId, qty }));
-      // result of calling should return the row we created
-      // const cartId = req.params.cartId
     } catch (ex) {
       next(ex);
     }
@@ -203,13 +172,11 @@ app.put(
   }
 );
 
-// init function
+//INIT FUNCTION
 const init = async () => {
   await client.connect();
-  //Create TABLES
   await client.query(SCHEMA);
 
-  //SEEDS USERS && PRODUCTS && SHOULD CART && CART_PRODUCT
   await seedDb();
   // console.log("data seeded");
 
@@ -222,5 +189,4 @@ const init = async () => {
   app.listen(port, () => console.log(`listening on port ${port}`));
 };
 
-// init function invocation
 init();

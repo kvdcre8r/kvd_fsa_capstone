@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import useToken from "../useToken.js";
 import {getCartProducts} from "../api.js"
-// import { getAccount, deleteReservation } from "../api.js";
 
 export default function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
@@ -23,8 +22,8 @@ export default function Cart() {
       <ul>
         {cartProducts.map((product) => (
           <li key={product.id}>
-            {product.name}{" "}
-            {product.qty}
+            <p>{product.name}{" "}</p>
+            <p>qty: {product.qty}</p>
           </li>
         ))}
       </ul>

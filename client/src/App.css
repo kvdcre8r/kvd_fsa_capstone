@@ -1,6 +1,6 @@
 .heading {
   background-color: rgb(98, 98, 98);
-  border: 2px solid white;
+  border: 3px solid white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
@@ -30,10 +30,6 @@
     padding-bottom: 5px;
   }
 
-  .homelink {
-    color: darkorange;
-  }
-
   .leftlink {
     color: silver;
   }
@@ -49,13 +45,19 @@
 
 .products {
   align-content: center;
-  border: 3px solid ivory;
+  border: 2px solid ivory;
   background-color: black;
   border-radius: 5px;
   padding: 10px;
 
-  h2 {
+  h3 {
     color: greenyellow;
+    margin-left: 15px;
+  }
+
+  h2 {
+    color: darkorange;
+    margin-left: 15px;
   }
 
   #product_name {
@@ -118,7 +120,7 @@
 .categories,
 .cart {
   background-color: black;
-  border: 3px solid ivory;
+  border: 2px solid ivory;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: 5px;
@@ -131,7 +133,7 @@
 form {
   color: greenyellow;
   background-color: black;
-  border: 3px solid ivory;
+  border: 2px solid ivory;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: 5px;

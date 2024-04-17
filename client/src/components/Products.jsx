@@ -23,6 +23,7 @@ export default function Products() {
 
   return (
     <div className="products">
+      <h3>Welcome to the Dad Locker... It is time to get your geek on!</h3>
       <h2>Featured Products:</h2>
       <div className="product_map">
         {featuredProducts.map((product) => (

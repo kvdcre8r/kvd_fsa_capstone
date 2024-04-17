@@ -1,4 +1,3 @@
-//EVERYTHING IN THIS FILE PRODUCT
 const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const client = require("../client.js");
@@ -47,19 +46,6 @@ const createProductService = async ({name, is_available, qty, category, descript
     throw new Error(e);
   }
 };
-
-// const fetchFeaturedProducts = async (is_featured) => {
-//   try {
-//     const FETCH_PRODUCT_BY_IS_FEATURED_QUERY = `
-//     SELECT * FROM products
-//     WHERE is_featured = true;
-//     `;
-//     const { rows } = await client.query(FETCH_PRODUCT_BY_IS_FEATURED_QUERY, [is_featured]);
-//     return rows[0];
-//   } catch (e) {
-//     throw new Error(e);
-//   }
-// };
 
 const fetchCartProductsByCartId = async (cartId) => {
   const SQL = `
@@ -130,13 +116,6 @@ const updateCartProducts = async ({ cartId, productId, qty }) => {
   return res.rows[0];
 };
 
-//USE THE CART_PRODUCTID AND UPDATE THE QTY OF THE PROD WITHIN THAT ROW
-//use the cart_product_Id to reference the item you want to update
-//call validator if adding to make sure that we have enough to add from inventory
-//if removing from cart, subtract by the amount, if amount exceeds whats in the cart, just remove the item from the cart
-
-//CREATE A ROUTE TO VIEW CART, fetching All carts
-
 module.exports = {
   fetchProducts,
   createProductService,
@@ -146,5 +125,4 @@ module.exports = {
   addProductToCartProducts,
   updateCartProducts,
   fetchCartProductsByCartId,
-  // fetchFeaturedProducts,
 };

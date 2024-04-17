@@ -1,4 +1,3 @@
-// WILL PERTAIN TO USERS223const client = require("./client.js");
 const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const client = require("../client.js");
@@ -89,9 +88,6 @@ const authenticateUser = async ({ email, password }) => {
   return { token };
 };
 
-
-
-
 //isLoggedIn
 const fetchUserByTokenId = async(token)=> {
   let user;
@@ -107,19 +103,7 @@ const fetchUserByTokenId = async(token)=> {
     const error = Error('not authorized');
     error.status = 401;
     throw error;
-
   }
-  // const SQL = `
-  //   SELECT id, email FROM users WHERE id=$1;
-  // `;
-  // const response = await client.query(SQL, [id]);
-  // //look at what response is after line 114
-  // if(!response.rows.length){
-  //   const error = Error('not authorized');
-  //   error.status = 401;
-  //   throw error;
-  // }
-  // return response.rows[0];
 };
 
 

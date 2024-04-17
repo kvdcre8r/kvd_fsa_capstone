@@ -2,13 +2,11 @@ import { json } from "react-router-dom";
 
 export const API_URL = "http://localhost:3000/api";
 
-//API_URL,'user/register',{email:email,password:password}
 export const postToEndPoint = async (endpoint, bodyObj, token) => {
   try {
     const headers = { "Content-Type": "application/json" };
     if (token) {
       headers["Authorization"] = `Bearer ${token}`;
-      // headers["Authorization"] = `${token}`;
     }
     const response = await fetch(`${API_URL}/${endpoint}`, {
       method: "POST",
@@ -45,7 +43,6 @@ export const getCartProducts = async (token) => {
     const response = await fetch(`${API_URL}/cart`, {
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
         Authorization: `Bearer ${token}`,
       },
     });
@@ -112,5 +109,3 @@ export const getAccount = async (token) => {
     console.error(error);
   }
 };
-
-// hit /api/cart in url,create cart

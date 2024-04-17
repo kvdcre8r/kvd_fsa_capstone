@@ -33,7 +33,6 @@ export default function Products() {
 
   return (
     <div className="products">
-      <h2>CATEGORIES</h2>
       <h2>Accessories:</h2>
       <div className="product_map">
         {catAccessories.map((product) => (
