@@ -110,7 +110,7 @@ h2 {
     background-color: black;
     padding: 3px;
   }
-  figcaption {
+  :is(figcaption) {
     padding: 10px;
 
     #product_name {
@@ -147,7 +147,7 @@ form {
     padding: 10px;
   }
 
-  input {
+  :is(input) {
     margin-right: 10px;
   }
 }
