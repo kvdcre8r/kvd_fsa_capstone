@@ -10,6 +10,11 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import AllProducts from './components/AllProducts.jsx'
 import Categories from './components/Categories.jsx'
+import OrderConfirmation from './components/messages/OrderConfirmation.jsx'
+import RegisterConfirmation from './components/messages/RegisterConfirmation.jsx'
+import CartError from './components/messages/CartError.jsx'
+import LoginError from './components/messages/LoginError.jsx'
+import RegisterError from './components/messages/RegisterError.jsx'
 import "./App.css"
 
 function App() {
@@ -28,6 +33,11 @@ function App() {
           <Route path='/:id' element={<SingleProduct />} />
           <Route path='/categories' element={<Categories />} />
           <Route path='/all_products' element={<AllProducts />} />          
+          <Route path='/messages/order_confirmation' element={<OrderConfirmation />} />          
+          <Route path='/messages/register_confirmation' element={<RegisterConfirmation />} />          
+          <Route path='/messages/cart_error' element={<CartError />} />          
+          <Route path='/messages/login_error' element={<LoginError />} />          
+          <Route path='/messages/register_error' element={<RegisterError />} />          
         </Routes>
       </TokenContext.Provider>
     </div>
