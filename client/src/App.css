@@ -52,12 +52,15 @@
 
   h3 {
     color: greenyellow;
+    border-bottom: 1px solid greenyellow;
+    border-top: 1px solid greenyellow;
+    width: fit-content;
     margin-left: 15px;
   }
 
   h2 {
     color: darkorange;
-    margin-left: 15px;
+    margin-left: 30px;
   }
 
   #product_name {

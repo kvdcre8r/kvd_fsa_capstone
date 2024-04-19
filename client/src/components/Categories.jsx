@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../api.js";
 
-export default function Products() {
+export default function Categories() {
   const [catAccessories, setCatAccessories] = useState([]);
   const [catEntertainment, setCatEntertainment] = useState([]);
   const [catResources, setCatResources] = useState([]);
@@ -33,6 +33,7 @@ export default function Products() {
 
   return (
     <div className="products">
+      <h3>Categories</h3>
       <h2>Accessories:</h2>
       <div className="product_map">
         {catAccessories.map((product) => (
@@ -40,7 +41,7 @@ export default function Products() {
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>
@@ -53,7 +54,7 @@ export default function Products() {
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>
@@ -66,7 +67,7 @@ export default function Products() {
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>
@@ -79,7 +80,7 @@ export default function Products() {
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>

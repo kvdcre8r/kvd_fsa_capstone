@@ -21,7 +21,7 @@ export default function Cart() {
       <h2>Cart details:</h2>
       <ul>
         {cartProducts.map((product) => (
-          <li key={product.id}>
+          <li key={product.product_id}>
             <p>{product.name}{" "}</p>
             <p>qty: {product.qty}</p>
           </li>

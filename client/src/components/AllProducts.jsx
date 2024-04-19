@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProducts } from "../api.js";
 
-export default function Products() {
+export default function AllProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -18,14 +18,15 @@ export default function Products() {
 
   return (
     <div className="products">
-      <h2>All Products (A-Z)</h2>
+      <h3>All Products</h3>
+      <h2>(A-Z)</h2>
       <div className="product_map">
         {products.map((product) => (
           <div key={product.id} id="product_info">
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>

@@ -62,7 +62,12 @@ const fetchCartProductsByCartId = async (cartId) => {
 const createCartProduct = async ({ cartId, productId, qty }) => {
   try {
     const CREATE_CARTPRODUCT_SQL_STR = `
-    INSERT INTO cart_products(cart_id, product_id, qty) VALUES($1,$2,$3) RETURNING *;
+    INSERT INTO cart_products(cart_id, product_id, qty) 
+    VALUES($1,$2,$3)
+    ON CONFLICT(cart_id, product_id)
+    DO UPDATE SET
+    qty = cart_products.qty + $3
+    RETURNING *;
     `;
     const createCartProductsResponse = await client.query(
       CREATE_CARTPRODUCT_SQL_STR,

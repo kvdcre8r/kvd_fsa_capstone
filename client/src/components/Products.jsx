@@ -23,7 +23,7 @@ export default function Products() {
 
   return (
     <div className="products">
-      <h3>Welcome to the Dad Locker... It is time to get your geek on!</h3>
+      <h3>Welcome to the Dad Locker... It's time to get your geek on!</h3>
       <h2>Featured Products:</h2>
       <div className="product_map">
         {featuredProducts.map((product) => (
@@ -31,7 +31,7 @@ export default function Products() {
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>
@@ -44,7 +44,7 @@ export default function Products() {
             <p id="product_name">{product.name}</p>
             <img src={product.image} alt="product image" height={200} />
             <p>{product.is_available}</p>
-            <Link to={`${product.id}`} className="details">
+            <Link to={`/${product.id}`} className="details">
               see details
             </Link>
           </div>
