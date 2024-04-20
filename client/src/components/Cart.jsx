@@ -9,7 +9,7 @@ export default function Cart() {
   const navigate = useNavigate();
   console.log({token})
     if (!token) {
-      return <Navigate to="/messages/login_error"/>
+      return <Navigate to="/messages/cart_error"/>
     }
   useEffect(() => {
     if (token) {

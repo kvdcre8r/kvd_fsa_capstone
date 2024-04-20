@@ -24,8 +24,10 @@ export default function Login () {
         if (token){
             navigate('/')
         }
+        // else {
+        //     navigate('/messages/login_error')
+        // }
     }, [token])
-
 
     return (
         <form method="post" onSubmit={handleSubmit}>
