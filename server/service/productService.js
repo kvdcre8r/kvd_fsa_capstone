@@ -121,6 +121,12 @@ const updateCartProducts = async ({ cartId, productId, qty }) => {
   return res.rows[0];
 };
 
+const checkout = async ({ cartId }) => {
+  const DELETE = `DELETE from cart_products
+  where cart_id = $1`;
+  await client.query(DELETE, [cartId]);
+}
+
 module.exports = {
   fetchProducts,
   createProductService,
@@ -130,4 +136,5 @@ module.exports = {
   addProductToCartProducts,
   updateCartProducts,
   fetchCartProductsByCartId,
+  checkout,
 };

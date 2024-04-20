@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useToken from "../useToken.js";
-import {getCartProducts} from "../api.js"
+import {getCartProducts, checkout} from "../api.js"
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
@@ -31,7 +31,7 @@ export default function Cart() {
         <button onClick={(() => navigate("/"))}>
           Continue Shopping
         </button>
-        <button onClick={(() => navigate("/messages/order_confirmation"))}>
+        <button onClick={(() => checkout(token, cartProducts[0].cart_id).then(() => navigate("/messages/order_confirmation")))}>
           CHECKOUT
         </button>
       </ul>

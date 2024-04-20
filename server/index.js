@@ -28,6 +28,7 @@ const {
   removeProductFromCartProducts,
   updateCartProducts,
   fetchCartProductsByCartId,
+  checkout
 } = require("./service/productService.js");
 
 //MIDDLEWARE
@@ -171,6 +172,20 @@ app.put(
     }
   }
 );
+
+app.delete(
+  "/api/cart/:cartId",
+  isLoggedIn,
+  async (req, res, next) => {
+    try {
+      const {cartId} = req.params;
+      await checkout({cartId});
+      res.sendStatus(204);
+    } catch (e) {
+      next(e);
+    }
+  }
+)
 
 //INIT FUNCTION
 const init = async () => {

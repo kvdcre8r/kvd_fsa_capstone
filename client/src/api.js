@@ -52,6 +52,20 @@ export const getCartProducts = async (token) => {
   }
 };
 
+export const checkout = async (token, cartId) => {
+  try {
+    const response = await fetch(`${API_URL}/cart/${cartId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (ex) {
+    console.error(ex);
+  }
+}
+
 const updateProduct = async (id, token, available) => {
   try {
     const response = await fetch(`${API_URL}/products/${id}`, {
