@@ -83,6 +83,7 @@ app.get("/api/users", async (req, res, next) => {
 app.post("/api/users/register", async (req, res, next) => {
   try {
     const newUser = await createUserService(req.body);
+    await createUserCart({ user_id: newUser.id });
     res.send(newUser);
   } catch (ex) {
     next(ex);
@@ -126,9 +127,6 @@ app.get("/api/cart", isLoggedIn, async (req, res, next) => {
 app.post("/api/cart", isLoggedIn, async (req, res, next) => {
   try {
     let cart = await fetchCartByUserId({ user_id: req.user.id });
-    if (!cart) {
-      cart = await createUserCart({ user_id: req.user.id });
-    }
     const cartProductRes = await createCartProduct({
       cartId: cart.id,
       productId: req.body.productId,

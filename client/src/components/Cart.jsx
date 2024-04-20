@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import useToken from "../useToken.js";
 import {getCartProducts, checkout} from "../api.js"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 export default function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
   const [token, setToken] = useToken();
   const navigate = useNavigate();
-
+  console.log({token})
+    if (!token) {
+      return <Navigate to="/messages/login_error"/>
+    }
   useEffect(() => {
     if (token) {
       const fetchReso = async () => {
