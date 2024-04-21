@@ -132,11 +132,11 @@ h2 {
 }
 
 button {
-  margin-right: 10px;
+  margin: 0px 15px;
 }
 
 form {
-  color: greenyellow;
+  color: darkorange;
   background-color: black;
   border: 2px solid ivory;
   border-top-left-radius: 5px;
@@ -150,11 +150,16 @@ form {
   :is(input) {
     margin-right: 10px;
   }
+
+  :is(p) {
+    color: greenyellow;
+    margin-left: 20px;
+  }
 }
 
-  .spacer {
-    height: 400px;
-  }
+.spacer {
+  height: 400px;
+}
 
 @font-face {
   font-family: caudexR;

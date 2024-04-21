@@ -31,13 +31,13 @@ export default function Cart() {
             <p>qty: {product.qty}</p>
           </li>
         ))}
+      </ul>
         <button onClick={(() => navigate("/"))}>
           Continue Shopping
         </button>
         <button onClick={(() => checkout(token, cartProducts[0].cart_id).then(() => navigate("/messages/order_confirmation")))}>
           CHECKOUT
         </button>
-      </ul>
       <div className="spacer"></div>
     </div>
   );

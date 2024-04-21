@@ -20,8 +20,8 @@ export default function Register() {
 
   return (
     <form method="post" onSubmit={handleSubmit}>
-      REGISTER NOW
-      <label>Username:</label>
+      <h3>REGISTER HERE</h3>
+      <label>Email:</label>
       <input
         type="text"
         name="username"
@@ -40,6 +40,7 @@ export default function Register() {
         }}
       />
       <input type="submit" value="Submit" />
+      <p>- After registering, please login to access your new account.</p>
       <div className="spacer"></div>
     </form>
   );

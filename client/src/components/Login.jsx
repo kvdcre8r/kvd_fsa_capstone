@@ -18,29 +18,28 @@ export default function Login () {
         })
         setToken(userResponse.token);
         console.log(userResponse.token)
-    }
+}
 
     useEffect(() => {
         if (token){
-            navigate('/')
+            navigate('/messages/login_confirmation')
         }
-        // else {
-        //     navigate('/messages/login_error')
-        // }
     }, [token])
 
     return (
         <form method="post" onSubmit={handleSubmit}>
-            PLEASE LOGIN
-            <label>Username:</label>
+            <h3>PLEASE LOGIN</h3>
+            <label>Email:</label>
             <input type="text" name="username" value={username}
                 onChange={(e) => { setUsername(e.target.value) }} />
             <label>Password:</label>
             <input type="text" name="password" value={password}
                 onChange={(e) => { setPassword(e.target.value) }} />
             <input type="submit" value="Submit" />
+            <p>- If login is unsuccessful, please refresh the page to try again or register a new account.</p>
             <div className="spacer"></div>
         </form>
-        
     )
+
+
 }
