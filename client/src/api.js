@@ -1,6 +1,6 @@
 import { json } from "react-router-dom";
 
-export const API_URL = "http://localhost:3000/api";
+export const API_URL = "/api";
 
 export const postToEndPoint = async (endpoint, bodyObj, token) => {
   try {
